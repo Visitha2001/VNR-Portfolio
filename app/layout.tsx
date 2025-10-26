@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
 
       <body
-        className={`${monaSans.variable} antialiased pattern bg-gray-900`}
+        className={`${monaSans.variable} antialiased pattern bg-gray-950`}
       >
         <Header />
         {children}
