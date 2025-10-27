@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   const names = [
@@ -11,12 +12,11 @@ export default function HeroSection() {
     { left: "LEARNING &", right: "GROWING", color: "text-gray-700", delay: 0.9 },
   ];
 
-  // Calculate when all text is done animating
-  const lastAnimationDelay = names[names.length - 1].delay + 1.8; // 1.8s = motion duration + stagger buffer
+  const lastAnimationDelay = names[names.length - 1].delay + 1.8;
 
   return (
-    <section className="relative flex flex-col items-center justify-center h-auto bg-black overflow-hidden leading-[0.85] py-16">
-      {/* Text Animation */}
+    <>
+    <section className="relative flex flex-col items-center justify-center h-auto bg-gray-800 overflow-hidden leading-[0.85] py-25 scroll-mt-0">
       {names.map((name, index) => (
         <div
           key={index}
@@ -52,7 +52,7 @@ export default function HeroSection() {
         </div>
       ))}
 
-      {/* 👇 Animated Image (comes from bottom after text) */}
+      {/* Profile Image */}
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -61,16 +61,38 @@ export default function HeroSection() {
           ease: "easeOut",
           delay: lastAnimationDelay,
         }}
-        className="absolute bottom-0 flex justify-center w-full"
+        className="absolute bottom-0 flex justify-center w-full z-10"
       >
         <Image
           src="/no-bg-me.png"
           alt="Visitha Nirmal"
           width={1280}
           height={720}
-          className="object-contain"
+          className="object-contain pointer-events-none select-none"
         />
       </motion.div>
     </section>
+    <section>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1.2,
+          ease: "easeOut",
+          delay: lastAnimationDelay + 0.5,
+        }}
+        className="hidden md:flex absolute bottom-[20px] justify-center w-full z-20"
+      >
+        <Link
+          href="/Visitha Nirmal Rajapaksha-CV.pdf"
+          download
+          target="_blank"
+          className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-200 shadow-lg transition"
+        >
+          Download CV
+        </Link>
+      </motion.div>
+    </section>
+    </>
   );
 }
