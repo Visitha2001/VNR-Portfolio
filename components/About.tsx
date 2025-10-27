@@ -89,7 +89,10 @@ function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 sm:px-12 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 min-h-screen scroll-mt-15">
+    <section 
+      id="about" 
+      className="py-20 px-6 sm:px-12 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200 scroll-mt-15 h-auto sm:overflow-auto"
+    >
       <div className="container mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
@@ -112,6 +115,7 @@ function AboutSection() {
           cutting-edge technologies. My expertise lies in backend development, frontend development,
           cloud infrastructure, DevOps, and Machine Learning.
         </motion.p>
+
         <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -128,6 +132,7 @@ function AboutSection() {
             </a>
         </motion.div>
 
+        {/* Education Section */}
         <motion.h3
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +140,55 @@ function AboutSection() {
           viewport={{ once: true }}
           className="text-3xl font-bold text-center mb-10 text-gray-100"
         >
-          🚀 Tech Stack & Tools
+          Education
+        </motion.h3>
+
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.2 } }, // sequential animation
+          }}
+        >
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-lg w-full text-center"
+          >
+            <h3 className="text-2xl font-bold mb-2 text-gray-100">School</h3>
+            <p className="text-gray-400">Wariyapola Sri Sumangala Vidyalaya / Kandy</p>
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-lg w-full text-center"
+          >
+            <h3 className="text-2xl font-bold mb-2 text-gray-100">Campus</h3>
+            <p className="text-gray-400">ICBT Campus</p>
+            <p className="text-gray-400">Bsc. Software Engineering</p>
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-lg w-full text-center"
+          >
+            <h3 className="text-2xl font-bold mb-2 text-gray-100">University</h3>
+            <p className="text-gray-400">Cardiff Metropolitan University / UK</p>
+            <p className="text-gray-400">Bsc. Software Engineering</p>
+          </motion.div>
+        </motion.div>
+
+        {/* Tech Stack Section */}
+        <motion.h3
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold text-center mb-10 text-gray-100"
+        >
+          Tech Stack & Tools
         </motion.h3>
 
         <motion.div
