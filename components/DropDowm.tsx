@@ -19,7 +19,7 @@ export function DropDowm({navLinks}: {navLinks: {href: string; label: string}[]}
             <Menu className="w-10 h-10" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-auto dark bg-gray-800/50 backdrop-blur-sm rounded-lg" align="start">
+      <DropdownMenuContent className="w-auto dark bg-gray-800/50 backdrop-blur-sm rounded-lg" align="end">
         <DropdownMenuLabel>Visitha N. Rajapaksha</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
