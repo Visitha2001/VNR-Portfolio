@@ -61,12 +61,12 @@ export default function HeroSection() {
           ease: "easeOut",
           delay: lastAnimationDelay,
         }}
-        className="absolute bottom-0 flex justify-center w-full z-10"
+        className="absolute bottom-0 flex justify-center w-auto z-10"
       >
         <Image
           src="/no-bg-me.png"
           alt="Visitha Nirmal"
-          width={1280}
+          width={1200}
           height={720}
           className="object-contain pointer-events-none select-none"
         />
