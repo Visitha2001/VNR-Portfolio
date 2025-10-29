@@ -41,8 +41,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 sm:px-12 bg-black text-gray-200">
-      <div className="container mx-auto">
+    <section id="contact" className="py-20 bg-gradient-to-t from-black via-gray-950 to-gray-900 text-gray-200">
+      <div className="container mx-auto px-6 sm:px-0 overflow-x-hidden">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function Contact() {
           Contact Me
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -90,7 +90,7 @@ export default function Contact() {
                     <SiGmail className="text-blue-400 mr-2" />
                     <span className="text-white mr-2">Gmail :</span>
                   </div>
-                  <a href="mailto:visitha2001@gmail.com" target="_blank" className="text-blue-400 hover:text-blue-500 transition">
+                  <a href="mailto:visitha2001@gmail.com" target="_blank" className="text-blue-400 hover:text-blue-500 transition break-all">
                     visitha2001@gmail.com
                   </a>  
                 </span>
@@ -99,7 +99,7 @@ export default function Contact() {
                     <SiGithub className="text-blue-400 mr-2" />
                     <span className="text-white mr-2">GitHub :</span>
                   </div>
-                  <a href="https://github.com/Visitha2001" target="_blank" className="text-blue-400 hover:text-blue-500 transition">
+                  <a href="https://github.com/Visitha2001" target="_blank" className="text-blue-400 hover:text-blue-500 transition break-all">
                     https://github.com/Visitha2001
                   </a>
                 </span>
@@ -108,7 +108,7 @@ export default function Contact() {
                     <FaLinkedin className="text-blue-400 mr-2" />
                     <span className="mr-2">LinkedIn :</span>
                   </div>
-                  <a href="https://www.linkedin.com/in/visitha-nirmal-rajapaksha-5809a3300" target="_blank" className="text-blue-400 hover:text-blue-500 transition">
+                  <a href="https://www.linkedin.com/in/visitha-nirmal-rajapaksha-5809a3300" target="_blank" className="text-blue-400 hover:text-blue-500 transition break-all">
                     https://www.linkedin.com/in/visitha-nirmal-rajapaksha-5809a3300
                   </a>
                 </span>
@@ -117,7 +117,7 @@ export default function Contact() {
                     <FaMedium className="text-blue-400 mr-2" />
                     <span className="mr-2">Medium :</span>
                   </div>
-                  <a href="https://medium.com/@visitha2001" target="_blank" className="text-blue-400 hover:text-blue-500 transition">
+                  <a href="https://medium.com/@visitha2001" target="_blank" className="text-blue-400 hover:text-blue-500 transition break-all">
                     https://medium.com/@visitha2001
                   </a>
                 </span>
@@ -126,7 +126,7 @@ export default function Contact() {
                     <FaKaggle className="text-blue-400 mr-2" />
                     <span className="mr-2">Kaggle :</span>
                   </div>
-                  <a href="https://www.kaggle.com/visithanrajapaksha" target="_blank" className="text-blue-400 hover:text-blue-500 transition">
+                  <a href="https://www.kaggle.com/visithanrajapaksha" target="_blank" className="text-blue-400 hover:text-blue-500 transition break-all">
                     https://www.kaggle.com/visithanrajapaksha
                   </a>
                 </span>

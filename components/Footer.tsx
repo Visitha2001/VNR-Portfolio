@@ -8,8 +8,8 @@ import { SiFacebook, SiKaggle, SiMedium } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-16 px-6 sm:px-12">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer className="bg-gray-900 text-gray-300 py-16">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 px-6 sm:px-0">
         {/* About / Company */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
