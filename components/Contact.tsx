@@ -67,8 +67,8 @@ export default function Contact() {
                 <Image
                   src="/profile.png"
                   alt="Profile"
-                  width={100}
-                  height={100}
+                  width={150}
+                  height={150}
                   className="rounded-full object-cover"
                 />
               </div>
@@ -76,7 +76,8 @@ export default function Contact() {
                 <h3 className="text-xl font-bold mb-2">Visitha Nirmal Rajapaksha</h3>
                 <p className="text-gray-400"> Pronouns: He/Him</p>
                 <p className="text-gray-400"> Location: Kandy, Sri Lanka</p>
-                <p className="text-gray-400"> Phone: +94 764 632 042</p>
+                <p className="text-gray-400"> Phone: +94 764 632 042 / +94 781 262 257</p>
+                <p className="text-gray-400"> Email: visitha2001@gmail.com</p>
               </div>
             </div>
 
@@ -142,6 +143,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex flex-col gap-6 bg-gray-900 p-8 rounded-3xl shadow-lg"
           >
+            <h2 className="font-bold text-blue-400 text-xl">Contact via Email</h2>
             <input
               type="text"
               name="name"
