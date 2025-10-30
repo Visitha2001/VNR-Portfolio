@@ -24,7 +24,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="py-20 px-6 sm:px-12 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200"
+      className="mt-20 px-6 sm:px-12 bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-200"
     >
       <div className="container mx-auto">
 
