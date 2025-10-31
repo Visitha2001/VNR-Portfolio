@@ -6,17 +6,18 @@ import Link from "next/link";
 
 export default function HeroSection() {
   const names = [
-    { left: "VISITHA", right: "N. RAJAPAKS", color: "text-white", delay: 0 },
-    { left: "FULL-STACK", right: "DEVELOPE", color: "text-gray-300", delay: 0.3 },
+    { left: "VISITHA", right: "N. RAJAPAKSHA", color: "text-white", delay: 0 },
+    { left: "- SOFTWARE ", right: "ENGINEER -", color: "text-gray-300", delay: 0.3 },
     { left: "✪ TECH", right: "ENTHUSIAST ✪", color: "text-gray-500", delay: 0.6 },
-    { left: "LEARNING &", right: "GROWING", color: "text-gray-700", delay: 0.9 },
+    { left: "FULL-STACK", right: "DEVELOPER", color: "text-gray-700", delay: 0.9 },
+    { left: "LEARNING &", right: "GROWING", color: "text-gray-900", delay: 0.12 },
   ];
 
   const lastAnimationDelay = names[names.length - 1].delay + 1.8;
 
   return (
     <>
-    <section className="relative flex flex-col items-center justify-center h-auto bg-gray-800 overflow-hidden leading-[0.85] py-25 scroll-mt-0">
+    <section className="relative flex flex-col items-center justify-center h-auto bg-gray-800 overflow-hidden leading-[0.85] py-15 scroll-mt-0">
       {names.map((name, index) => (
         <div
           key={index}
@@ -31,7 +32,7 @@ export default function HeroSection() {
               ease: "easeOut",
               delay: name.delay,
             }}
-            className={`text-[9.5vw] font-extrabold tracking-tight ${name.color} whitespace-nowrap`}
+            className={`text-[8.5vw] font-extrabold tracking-tight ${name.color} whitespace-nowrap`}
           >
             {name.left}&nbsp;
           </motion.span>
@@ -45,7 +46,7 @@ export default function HeroSection() {
               ease: "easeOut",
               delay: name.delay + 0.4,
             }}
-            className={`text-[9.5vw] font-extrabold tracking-tight ${name.color} whitespace-nowrap`}
+            className={`text-[8.5vw] font-extrabold tracking-tight ${name.color} whitespace-nowrap`}
           >
             {name.right}
           </motion.span>
@@ -81,7 +82,7 @@ export default function HeroSection() {
           ease: "easeOut",
           delay: lastAnimationDelay + 0.5,
         }}
-        className="hidden md:flex absolute bottom-[20px] justify-center w-full z-20"
+        className="hidden md:flex absolute translate-y-[-80px] justify-center w-full z-20"
       >
         <Link
           href="/Visitha Nirmal Rajapaksha-CV.pdf"

@@ -125,3 +125,15 @@
 @utility pattern {
   @apply bg-[url('/pattern.png')] bg-top bg-no-repeat;
 }
+
+.halloween-font {
+  font-family: var(--font-creepster);
+}
+
+.abhaya-font {
+  font-family: var(--font-abhaya-libre);
+}
+
+.festive-font {
+  font-family: var(--font-festive);
+}
