@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mona_Sans, Creepster, Abhaya_Libre, Festive } from "next/font/google";
+import { Mona_Sans, Creepster, Abhaya_Libre, Festive, Mountains_of_Christmas } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/sonner";
@@ -28,6 +28,12 @@ const festive = Festive({
   variable: '--font-festive',
 });
 
+const mountainsOfChristmas = Mountains_of_Christmas({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-mountains-of-christmas',
+});
+
 export const metadata: Metadata = {
   title: "Visitha Dev",
   description: "Visitha Dev Portfolio | Visitha Dev",
@@ -42,7 +48,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
 
       <body
-        className={`${monaSans.variable} ${creepster.variable} ${abhayaLibre.variable} ${festive.variable} antialiased pattern bg-gray-950`}
+        className={`${monaSans.variable} ${creepster.variable} ${abhayaLibre.variable} ${festive.variable} ${mountainsOfChristmas.variable} antialiased pattern bg-gray-950`}
       >
         <Header />
         {children}
