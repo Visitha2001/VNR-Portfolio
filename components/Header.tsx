@@ -5,6 +5,7 @@ import Link from "next/link";
 import { DropDowm } from "./DropDowm";
 import { Github, ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -98,12 +99,21 @@ const Header = () => {
       </header>
 
       {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 bg-blue-400 hover:bg-blue-500 text-black p-3 rounded-full shadow-lg transition-opacity duration-300 z-50 font-bold"
-        >
-          <ArrowUp size={25} />
-        </button>
+        <div className="flex">
+          <Link
+            href="https://wa.me/qr/MYI3VWZYIAECG1"
+            target="_blank"
+            className="fixed bottom-20 right-6 bg-green-400 hover:bg-green-500 text-black p-3 rounded-full shadow-lg transition-opacity duration-300 z-50 font-bold"
+          >
+            <FaWhatsapp size={25} />
+          </Link>
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 bg-blue-400 hover:bg-blue-500 text-black p-3 rounded-full shadow-lg transition-opacity duration-300 z-50 font-bold"
+          >
+            <ArrowUp size={25} />
+          </button>
+        </div>
       )}
     </>
   );
