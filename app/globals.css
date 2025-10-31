@@ -137,3 +137,7 @@
 .festive-font {
   font-family: var(--font-festive);
 }
+
+.christmas-font {
+  font-family: var(--font-mountains-of-christmas);
+}
