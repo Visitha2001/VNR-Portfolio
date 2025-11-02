@@ -6,6 +6,7 @@ import { educationData } from "@/app/consts/edu";
 import { techStack } from "@/app/consts/tech";
 import SkillComponent from "./Skill";
 import TechStack from "./TechStack";
+import { experienceData } from "@/app/consts/experience";
 
 function AboutSection() {
   const [showAllTech, setShowAllTech] = useState(false);
@@ -67,6 +68,52 @@ function AboutSection() {
           >
             Download CV
           </a>
+        </motion.div>
+
+        {/* Experience */}
+        <motion.h3
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold text-center mb-10 text-gray-100"
+        >
+          Experience
+        </motion.h3>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center mb-16"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.2 } },
+          }}
+        >
+          {experienceData.map((item: any , index: number) => (
+            <motion.div
+              key={index}
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+              className="bg-gray-800/30 backdrop-blur-sm p-6 rounded-xl shadow-lg w-full text-center border border border-blue-700"
+            >
+              <h3 className="text-2xl font-bold mb-2 text-gray-100">{item.title}</h3>
+              {/* Company Name */}
+              <p className="text-lg font-semibold mb-4 text-purple-400">{item.company}</p> 
+              {item.details.map((detail: any, detailIndex: number) => (
+                <p key={detailIndex} className="text-gray-400">
+                  {detail}
+                </p>
+              ))}
+              <p className="text-gray-400">{item.duration}</p>
+              <p className="text-gray-400 mt-4">
+                {item.tags.map((tag: any, tagIndex: number) => (
+                  <span key={tagIndex} className="bg-blue-700 text-gray-200 px-2 py-1 rounded-full mr-2">
+                    {tag}
+                  </span>
+                ))}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
 
         {/* Education Section */}
