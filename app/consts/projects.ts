@@ -1,12 +1,32 @@
 export const projects = [
   {
+    title: "List of Maldives",
+    description:
+      "A project for increasing the awareness of the Maldives. including all the islands and their resorts, hotels, and activities.",
+    image: "/projects/lom.png",
+    urls: [
+      { name: "Website", url: "https://listofmaldives.com" },
+    ],
+    tech: ["react", "tailwindcss", "golang", "postgres", "cloudflare"],
+  },
+  {
+    title: "RoomRadar",
+    description:
+      "roomradar is a room availability sharing platform for agents and hotels. trade partners live room-type availability of your resort. Skip making time consuming availability charts manually. Share accurate, live room-type availability to trade partners, up to 12 months ahead.",
+    image: "/projects/roomradar.png",
+    urls: [
+      { name: "Website", url: "https://roomradar.mv/" },
+    ],
+    tech: ["golang", "postgres", "react", "cloudflare"],
+  },
+  {
     title: "Stock Market Analysis Web application",
     description:
       "A Stock Market and crypto currency Analysis Web application with stocks, crypto, and daily alerts. Built in Next.js with TailwindCSS and MongoDB.",
     image: "/projects/stock-market.jpg",
     urls: [
-        { name: "Project", url: "https://github.com/Visitha2001/StockMarket.git" },
-        { name: "Live Url", url: "https://stock-market-opal.vercel.app/" },
+      { name: "Project", url: "https://github.com/Visitha2001/StockMarket.git" },
+      { name: "Live Url", url: "https://stock-market-opal.vercel.app/" },
     ],
     tech: ["Next.js", "react-hook-form", "shadcn/ui", "TailwindCSS", "MongoDB", "Vercel"],
   },
@@ -53,8 +73,8 @@ export const projects = [
     description: "AI Powered Personality Test using React.js and FastAPI. Users can take personality tests and get results based on their personality.",
     image: "/projects/personality-test.png",
     urls: [
-        { name: "Frontend", url: "https://github.com/Visitha2001/PersonalityPredictApp-Frontend.git" },
-        { name: "Backend", url: "https://github.com/Visitha2001/Personality-Test.git" },
+      { name: "Frontend", url: "https://github.com/Visitha2001/PersonalityPredictApp-Frontend.git" },
+      { name: "Backend", url: "https://github.com/Visitha2001/Personality-Test.git" },
     ],
     tech: ["React.js", "FastAPI", "TailwindCSS", "Kaggle", "Jupyter Notebook", "Computational-Intelligence", "Nural Network"],
   },
