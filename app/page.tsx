@@ -9,6 +9,28 @@ import ContactSection from "@/components/Contact";
 import ProjectsSection from "@/components/Projects";
 import RollingTitles from "@/components/Roling";
 
+export const metadata = {
+  title: "VNR Portfolio",
+  description: "Visitha Nirmal Rajapaksha's personal portfolio. This includes my education, projects, skills, and contact information.",
+  others: {
+    og: {
+      title: "VNR Portfolio",
+      description: "Visitha Nirmal Rajapaksha's personal portfolio. This includes my education, projects, skills, and contact information.",
+      type: "website",
+      locale: "en_US",
+      siteName: "VNR Portfolio",
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "VNR Portfolio",
+        },
+      ],
+    },
+  },
+};
+
 export default function Home() {
   const bg = "bg-gray-900";
   const currentYear = new Date().getFullYear();
