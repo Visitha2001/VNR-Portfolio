@@ -90,7 +90,7 @@ function AboutSection() {
             show: { transition: { staggerChildren: 0.2 } },
           }}
         >
-          {experienceData.map((item: any , index: number) => (
+          {experienceData.map((item: any, index: number) => (
             <motion.div
               key={index}
               variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
@@ -98,20 +98,20 @@ function AboutSection() {
             >
               <h3 className="text-2xl font-bold mb-2 text-gray-100">{item.title}</h3>
               {/* Company Name */}
-              <p className="text-lg font-semibold mb-4 text-purple-400">{item.company}</p> 
+              <p className="text-lg font-semibold mb-4 text-purple-400">{item.company}</p>
               {item.details.map((detail: any, detailIndex: number) => (
                 <p key={detailIndex} className="text-gray-400">
                   {detail}
                 </p>
               ))}
               <p className="text-gray-400">{item.duration}</p>
-              <p className="text-gray-400 mt-4">
+              <div className="flex flex-wrap justify-center text-gray-400 mt-4">
                 {item.tags.map((tag: any, tagIndex: number) => (
                   <span key={tagIndex} className="bg-blue-700 text-gray-200 px-2 py-1 rounded-full mr-2">
                     {tag}
                   </span>
                 ))}
-              </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
@@ -152,7 +152,7 @@ function AboutSection() {
             </motion.div>
           ))}
         </motion.div>
-        
+
         <SkillComponent />
 
         {/* Tech Stack Section */}

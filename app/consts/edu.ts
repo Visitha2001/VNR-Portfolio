@@ -1,14 +1,14 @@
 export const educationData = [
   {
-    title: "School",
-    details: ["Wariyapola Sri Sumangala Vidyalaya / Kandy"],
+    title: "University",
+    details: ["Cardiff Metropolitan University / UK", "BSc. Software Engineering"],
   },
   {
     title: "Campus",
     details: ["ICBT Campus", "BSc. Software Engineering"],
   },
   {
-    title: "University",
-    details: ["Cardiff Metropolitan University / UK", "BSc. Software Engineering"],
+    title: "School",
+    details: ["Wariyapola Sri Sumangala Vidyalaya / Kandy"],
   },
 ];
