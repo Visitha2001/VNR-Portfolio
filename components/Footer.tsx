@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa6";
-import { GrGithub, GrMedium } from "react-icons/gr";
+import { GrGithub } from "react-icons/gr";
 import { SiFacebook, SiKaggle, SiMedium } from "react-icons/si";
 
 export default function Footer() {
@@ -19,7 +19,7 @@ export default function Footer() {
         >
           <Image src="/no-bg2.png" alt="png" width={200} height={200} className="mb-4"/>
           <p className="text-gray-400 text-sm">
-            I'm a full-stack developer passionate about building scalable web applications
+            I&apos;m a full-stack developer passionate about building scalable web applications
             and exploring new technologies. I love clean code, minimal design, and innovation.
           </p>
         </motion.div>

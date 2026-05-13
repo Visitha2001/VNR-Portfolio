@@ -1,27 +1,20 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { educationData } from "@/app/consts/edu";
-import { techStack } from "@/app/consts/tech";
 import SkillComponent from "./Skill";
 import TechStack from "./TechStack";
 import { experienceData } from "@/app/consts/experience";
 
+interface ExperienceItem {
+  title: string;
+  company: string;
+  details: string[];
+  duration: string;
+  tags: string[];
+}
+
 function AboutSection() {
-  const [showAllTech, setShowAllTech] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect screen size
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024); // lg breakpoint
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const visibleTech = isMobile && !showAllTech ? techStack.slice(0, 12) : techStack;
-
   return (
     <section
       id="about"
@@ -48,7 +41,7 @@ function AboutSection() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-lg text-gray-400 leading-relaxed text-center mb-16"
         >
-          I'm a passionate full-stack developer who loves building scalable applications and exploring
+          I&apos;m a passionate full-stack developer who loves building scalable applications and exploring
           cutting-edge technologies. My expertise lies in backend development, frontend development,
           cloud infrastructure, DevOps, and Machine Learning.
         </motion.p>
@@ -90,7 +83,7 @@ function AboutSection() {
             show: { transition: { staggerChildren: 0.2 } },
           }}
         >
-          {experienceData.map((item: any, index: number) => (
+          {experienceData.map((item: ExperienceItem, index: number) => (
             <motion.div
               key={index}
               variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
@@ -99,14 +92,14 @@ function AboutSection() {
               <h3 className="text-2xl font-bold mb-2 text-gray-100">{item.title}</h3>
               {/* Company Name */}
               <p className="text-lg font-semibold mb-4 text-purple-400">{item.company}</p>
-              {item.details.map((detail: any, detailIndex: number) => (
+              {item.details.map((detail: string, detailIndex: number) => (
                 <p key={detailIndex} className="text-gray-400">
                   {detail}
                 </p>
               ))}
               <p className="text-gray-400">{item.duration}</p>
               <div className="flex flex-wrap justify-center text-gray-400 mt-4">
-                {item.tags.map((tag: any, tagIndex: number) => (
+                {item.tags.map((tag: string, tagIndex: number) => (
                   <span key={tagIndex} className="bg-blue-700 text-gray-200 px-2 py-1 rounded-full mr-2">
                     {tag}
                   </span>

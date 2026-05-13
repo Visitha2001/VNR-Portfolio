@@ -70,7 +70,7 @@ export default function HalloweenSection({ date }: HalloweenSectionProps) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Draw particles
-      for (let p of particles) {
+      for (const p of particles) {
         ctx.fillStyle = p.color;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);

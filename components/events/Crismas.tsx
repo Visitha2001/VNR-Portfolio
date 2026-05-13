@@ -69,45 +69,59 @@ export default function Christmas({ date }: ChristmasProps) {
 }
 
 /* ----------------- Snowflakes Animation ----------------- */
+interface Flake {
+  size: number;
+  left: number;
+  duration: number;
+  delay: number;
+  screenHeight: number;
+}
+
 function Snowflakes() {
-  if (typeof window === "undefined") return null;
+  const [flakes, setFlakes] = useState<Flake[]>([]);
 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
 
-  const flakes = Array.from({ length: 60 });
+    const newFlakes = Array.from({ length: 60 }).map(() => ({
+      size: Math.random() * 50 + 5,
+      left: Math.random() * screenWidth,
+      duration: Math.random() * 10 + 5,
+      delay: Math.random() * 5,
+      screenHeight
+    }));
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setFlakes(newFlakes);
+  }, []);
+
+  if (flakes.length === 0) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {flakes.map((_, i) => {
-        const size = Math.random() * 50 + 5;
-        const left = Math.random() * screenWidth;
-        const duration = Math.random() * 10 + 5;
-        const delay = Math.random() * 5;
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute"
-            initial={{ y: -20, rotate: 0 }}
-            animate={{ y: [0, screenHeight + 20], rotate: 360 }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              delay: delay,
-              ease: "linear",
-            }}
-            style={{
-              left,
-              width: size,
-              height: size,
-              color: "#ffffff",
-            }}
-          >
-            <TbSnowflake style={{ width: size, height: size }} />
-          </motion.div>
-        );
-      })}
+      {flakes.map((flake, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          initial={{ y: -20, rotate: 0 }}
+          animate={{ y: [0, flake.screenHeight + 20], rotate: 360 }}
+          transition={{
+            duration: flake.duration,
+            repeat: Infinity,
+            delay: flake.delay,
+            ease: "linear",
+          }}
+          style={{
+            left: flake.left,
+            width: flake.size,
+            height: flake.size,
+            color: "#ffffff",
+          }}
+        >
+          <TbSnowflake style={{ width: flake.size, height: flake.size }} />
+        </motion.div>
+      ))}
     </div>
   );
 }

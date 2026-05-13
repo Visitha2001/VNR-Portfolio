@@ -69,69 +69,97 @@ export default function AluthAvurudu({ date }: AluthAvuruduProps) {
 }
 
 /* ----------------- Particles: Confetti + Flowers ----------------- */
+interface ParticleItem {
+  isFlower: boolean;
+  size: number;
+  color: string;
+  duration: number;
+  delay: number;
+  left: number;
+  initialX: number;
+  screenHeight: number;
+}
+
 function Particles() {
-  if (typeof window === "undefined") return null;
+  const [particles, setParticles] = useState<ParticleItem[]>([]);
 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
 
-  // Colors for flowers and confetti
-  const flowerColors = ["#FF7F50", "#FFD700", "#FF4500"]; // orange, yellow, red
-  const confettiColors = ["#FFEB3B", "#FF9800", "#F44336"]; // lighter confetti
+    // Colors for flowers and confetti
+    const flowerColors = ["#FF7F50", "#FFD700", "#FF4500"]; // orange, yellow, red
+    const confettiColors = ["#FFEB3B", "#FF9800", "#F44336"]; // lighter confetti
 
-  // Create 50 particles
-  const particles = Array.from({ length: 50 });
+    const newParticles = Array.from({ length: 50 }).map(() => {
+      const isFlower = Math.random() > 0.5; // 50% chance flower vs confetti
+      const size = isFlower ? Math.random() * 50 + 15 : Math.random() * 5 + 3; // Increased flower size for visibility
+      const color = isFlower
+        ? flowerColors[Math.floor(Math.random() * flowerColors.length)]
+        : confettiColors[Math.floor(Math.random() * confettiColors.length)];
+        
+      const duration = Math.random() * 5 + 5;
+      const delay = Math.random() * 3;
+      const left = Math.random() * screenWidth;
+      const initialX = Math.random() * screenWidth;
+
+      return {
+        isFlower,
+        size,
+        color,
+        duration,
+        delay,
+        left,
+        initialX,
+        screenHeight
+      };
+    });
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setParticles(newParticles);
+  }, []);
+
+  if (particles.length === 0) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((_, i) => {
-        const isFlower = Math.random() > 0.5; // 50% chance flower vs confetti
-        const size = isFlower ? Math.random() * 50 + 15 : Math.random() * 5 + 3; // Increased flower size for visibility
-        const color = isFlower
-          ? flowerColors[Math.floor(Math.random() * flowerColors.length)]
-          : confettiColors[Math.floor(Math.random() * confettiColors.length)];
-          
-        const duration = Math.random() * 5 + 5;
-        const delay = Math.random() * 3;
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute"
-            initial={{ x: Math.random() * screenWidth, y: -20, rotate: 0 }}
-            animate={{ y: [0, screenHeight + 40], rotate: isFlower ? 360 : 0 }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              delay: delay,
-              ease: "linear", // Changed ease to 'linear' for natural falling
-            }}
-            style={{
-              // Set initial X and Y positions within the bounds
-              left: Math.random() * screenWidth, 
-              top: -20,
-            }}
-          >
-            {isFlower ? (
-              // RENDER FLOWER ICON
-              <TbFlower 
-                style={{ color: color, width: size, height: size }}
-                className="opacity-75" // Added some opacity for a softer look
-              />
-            ) : (
-              // RENDER CONFETTI DOT
-              <div 
-                className="rounded-full"
-                style={{
-                  width: size,
-                  height: size,
-                  backgroundColor: color,
-                }}
-              />
-            )}
-          </motion.div>
-        );
-      })}
+      {particles.map((p, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          initial={{ x: p.initialX, y: -20, rotate: 0 }}
+          animate={{ y: [0, p.screenHeight + 40], rotate: p.isFlower ? 360 : 0 }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "linear", // Changed ease to 'linear' for natural falling
+          }}
+          style={{
+            // Set initial X and Y positions within the bounds
+            left: p.left, 
+            top: -20,
+          }}
+        >
+          {p.isFlower ? (
+            // RENDER FLOWER ICON
+            <TbFlower 
+              style={{ color: p.color, width: p.size, height: p.size }}
+              className="opacity-75" // Added some opacity for a softer look
+            />
+          ) : (
+            // RENDER CONFETTI DOT
+            <div 
+              className="rounded-full"
+              style={{
+                width: p.size,
+                height: p.size,
+                backgroundColor: p.color,
+              }}
+            />
+          )}
+        </motion.div>
+      ))}
     </div>
   );
 }

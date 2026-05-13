@@ -40,13 +40,9 @@ export default function Home() {
   const awruduDate = `${currentYear}-04-14T00:00:00`;
   const crismasDate = `${currentYear}-12-25T00:00:00`;
 
-  const today = new Date();
-  const isChristmas =
-    (today.getMonth() === 11 && today.getDate() >= 0 && today.getDate() <= 31)
-
   return (
     <>
-      <Snowfall active={isChristmas} />
+      <Snowfall />
 
       <NewYearSection year={currentYear} date={newYearDate} />
       <HalloweenSection date={haloweenDate} />

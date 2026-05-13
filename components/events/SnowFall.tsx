@@ -2,51 +2,71 @@
 
 import { TbSnowflake } from "react-icons/tb";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-interface SnowfallProps {
-  active: boolean;
+interface Flake {
+  size: number;
+  left: number;
+  duration: number;
+  delay: number;
+  rotate: number;
+  screenHeight: number;
 }
 
-export default function Snowfall({ active }: SnowfallProps) {
-  if (!active || typeof window === "undefined") return null;
+export default function Snowfall() {
+  const [flakes, setFlakes] = useState<Flake[]>([]);
+  const [active, setActive] = useState(false);
 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
+  useEffect(() => {
+    const today = new Date();
+    const isChristmas = today.getMonth() === 11 && today.getDate() >= 0 && today.getDate() <= 31;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setActive(isChristmas);
 
-  const flakes = Array.from({ length: 100 });
+    if (!isChristmas) return;
+
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    const newFlakes = Array.from({ length: 100 }).map(() => ({
+      size: Math.random() * 10 + 3,
+      left: Math.random() * screenWidth,
+      duration: Math.random() * 10 + 5,
+      delay: Math.random() * 5,
+      rotate: Math.random() * 360,
+      screenHeight
+    }));
+
+    setFlakes(newFlakes);
+  }, []);
+
+  if (!active || flakes.length === 0) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-      {flakes.map((_, i) => {
-        const size = Math.random() * 10 + 3;
-        const left = Math.random() * screenWidth;
-        const duration = Math.random() * 10 + 5;
-        const delay = Math.random() * 5;
-
-        return (
-          <motion.div
-            key={i}
-            className="absolute"
-            initial={{ y: -10, rotate: 0, opacity: 0.8 }}
-            animate={{ y: [0, screenHeight + 10], rotate: Math.random() * 360 }}
-            transition={{
-              duration: duration,
-              repeat: Infinity,
-              delay: delay,
-              ease: "linear",
-            }}
-            style={{
-              left,
-              width: size,
-              height: size,
-              backgroundColor: "#ffffff",
-              borderRadius: "50%",
-            }}
-          >
-            <TbSnowflake style={{ width: size, height: size }} />
-          </motion.div>
-        );
-      })}
+      {flakes.map((flake, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          initial={{ y: -10, rotate: 0, opacity: 0.8 }}
+          animate={{ y: [0, flake.screenHeight + 10], rotate: flake.rotate }}
+          transition={{
+            duration: flake.duration,
+            repeat: Infinity,
+            delay: flake.delay,
+            ease: "linear",
+          }}
+          style={{
+            left: flake.left,
+            width: flake.size,
+            height: flake.size,
+            backgroundColor: "#ffffff",
+            borderRadius: "50%",
+          }}
+        >
+          <TbSnowflake style={{ width: flake.size, height: flake.size }} />
+        </motion.div>
+      ))}
     </div>
   );
 }
