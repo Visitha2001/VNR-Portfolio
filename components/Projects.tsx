@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import { projects } from "@/app/consts/projects";
 
 export default function ProjectsSection() {
   const [showAll, setShowAll] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const visibleProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
@@ -14,7 +15,7 @@ export default function ProjectsSection() {
       id="projects"
       className="py-20 bg-gradient-to-b from-black via-gray-950 to-gray-900 text-gray-200"
     >
-      <div className="container mx-auto px-6 sm:px-0">
+      <div className="container mx-auto px-6 sm:px-12">
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
@@ -43,7 +44,10 @@ export default function ProjectsSection() {
 
               {/* Inner Dark Container */}
               <div className="relative z-10 bg-gray-900 rounded-[10px] flex flex-col h-full">
-                <div className="overflow-hidden rounded-lg mb-4">
+                <div 
+                  className="overflow-hidden rounded-lg mb-4 cursor-pointer"
+                  onClick={() => setSelectedImage(project.image)}
+                >
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -73,24 +77,30 @@ export default function ProjectsSection() {
 
                   <div
                     className={`flex ${
-                      project.urls.length > 1
+                      project.urls && project.urls.length > 1
                         ? "justify-between"
                         : "justify-center"
                     } gap-3`}
                   >
-                    {project.urls.map((link, i) => (
-                      <motion.a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="flex-1 text-center text-sm font-semibold text-white border border-blue-500 rounded-lg py-2 transition-all duration-300 hover:bg-blue-500 hover:text-black"
-                      >
-                        {link.name}
-                      </motion.a>
-                    ))}
+                    {!project.urls || project.urls.length === 0 ? (
+                      <div className="flex-1 text-center text-sm font-semibold text-gray-400 border border-gray-600 rounded-lg py-2 bg-gray-800/50 cursor-not-allowed select-none">
+                        Private Project
+                      </div>
+                    ) : (
+                      project.urls.map((link, i) => (
+                        <motion.a
+                          key={i}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="flex-1 text-center text-sm font-semibold text-white border border-blue-500 rounded-lg py-2 transition-all duration-300 hover:bg-blue-500 hover:text-black"
+                        >
+                          {link.name}
+                        </motion.a>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
@@ -119,6 +129,56 @@ export default function ProjectsSection() {
           </div>
         )}
       </div>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-5xl w-full max-h-[90vh] rounded-lg overflow-hidden flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={selectedImage}
+                alt="Project Modal"
+                width={1200}
+                height={800}
+                className="object-contain w-full h-full rounded-lg"
+              />
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="absolute top-4 right-4 bg-gray-900/50 hover:bg-gray-900 text-white rounded-full p-2 backdrop-blur-sm transition-all"
+                aria-label="Close modal"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -42,7 +42,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-t from-black via-gray-950 to-gray-900 text-gray-200">
-      <div className="container mx-auto px-6 sm:px-0 overflow-x-hidden">
+      <div className="container mx-auto px-6 sm:px-12 overflow-x-hidden">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
