@@ -1,5 +1,12 @@
 export const projects = [
   {
+    title: "VLC POS",
+    description:
+      "A point of sale system for small businesses. Built using React.js, Golang, and PostgresSQL.",
+    image: "/projects/vlc-pos.png",
+    tech: ["React.js", "Golang", "PostgresSQL", "Google Cloud Platform", "TailwindCSS"],
+  },
+  {
     title: "List of Maldives",
     description:
       "A project for increasing the awareness of the Maldives. including all the islands and their resorts, hotels, and activities.",
